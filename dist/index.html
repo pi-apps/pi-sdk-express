@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pi SDK Node.js Test</title>
+    <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+    <style>
+        body {
+            font-family: system-ui;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            background: #14F195;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pi SDK Node.js Test</h1>
+    <div id="pi-button"></div>
+
+    <script type="module">
+        import { PiSdkBase } from '/sdk/index.js';
+        PiSdkBase.paymentBasePath = 'pi_payment';
+
+        const sdk = new PiSdkBase();
+        const button = document.getElementById('pi-button');
+        
+        sdk.onConnection = () => {
+            button.innerHTML = '<button onclick="createPayment()">Buy with Pi</button>';
+        };
+
+        sdk.connect();
+
+        window.createPayment = () => {
+            sdk.createPayment({
+                amount: 0.01,
+                memo: 'Test Payment',
+                metadata: { productId: 42 }
+            });
+        };
+    </script>
+</body>
+</html>
