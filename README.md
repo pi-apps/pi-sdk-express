@@ -1,6 +1,6 @@
-# Pi SDK Node.js/Express
+# Pi SDK Express
 
-A Node.js/Express SDK for processing Pi Network payments.
+An Express SDK for processing Pi Network payments.
 
 ## Installation
 
@@ -34,4 +34,3 @@ export PI_API_KEY="your-api-key"
 ## Documentation
 
 See [README.md](./README.md) for full documentation.
-
